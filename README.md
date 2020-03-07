@@ -6,7 +6,7 @@ A PyQt GUI for paper reading notes management and comparison.
 
 PaperMatrix organizes paper notes by domains, and it is easy for human to compare same domains of several papers. The entry-domain viewing model makes it a matrix of notes.
 
-This is a work during the self-quarantine in February 2019 because of the COVID-19. Were to publish on the extraordinary Feb 29th, but delayed till Mar 8th. >_<
+This is a work during the self-quarantine in February 2020 because of the COVID-19. Were to publish on the extraordinary Feb 29th, but delayed till Mar 8th. >_<
 
 ## Prerequisite
 
