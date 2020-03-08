@@ -72,7 +72,11 @@ class SourceArticleDBModel(QtCore.QAbstractItemModel):
             timestr = item.at(qindex.column()) + delta
             res = timestr.strftime('%Y-%m-%d %H:%M:%S')
 
-        if role == QtCore.Qt.DisplayRole or role == QtCore.Qt.EditRole:
+        if role == QtCore.Qt.DisplayRole:
+            if 5 <= qindex.column() <= 6:
+                return "; ".join(res)
+            return res
+        elif role == QtCore.Qt.EditRole:
             return res
         elif role == QtCore.Qt.SizeHintRole:  # TODO: hints size need accurate font size
             strlen = len(str(res))
@@ -204,7 +208,7 @@ class ArticleViewer(QtWidgets.QWidget):
         # header issues
         headerView = self.proxyView.header()
         headerView.setSectionsMovable(True)
-        headerView.setFirstSectionMovable(False)
+        # headerView.setFirstSectionMovable(False)
         headerView.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
 
         headerView.customContextMenuRequested.connect(self.headerRightClicked)

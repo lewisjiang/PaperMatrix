@@ -22,6 +22,8 @@ Just run `python3 papermatrix.py` in the terminal (or equivalent w/ different co
 
 ### v0.1
 
+![function demo](./demo/demo_usage.gif)
+
 #### Record paper notes by domains
 
 #### Put notes together for domain by domain comparison
@@ -41,6 +43,7 @@ Just run `python3 papermatrix.py` in the terminal (or equivalent w/ different co
 ## Todo list
 
 - [ ] open source license w.r.t. Qt
+- [ ] operation hotkeys (close tab, switch tab)
 - [ ] a better way to generate unique paper id.
 - [ ] font size for accurate collapse/expand entries in viewers
 - [ ] reset default view mode (when dragging columns, adjusting width went too far)

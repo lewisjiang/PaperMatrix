@@ -22,6 +22,7 @@ class EditTabPageWidget(QtWidgets.QWidget):
         self.tempArticle = entry
         topFiller = QWidget()
         topFiller.setMaximumWidth(900)  # Max width
+        topFiller.setMinimumHeight(1200)
 
         layout = QGridLayout(topFiller)
         # ##############################################################################################################
@@ -135,25 +136,25 @@ class EditTabPageWidget(QtWidgets.QWidget):
         self.qText_mainMethod.setTabChangesFocus(True)
         layout.addWidget(qlabel_mainMethod, 12, 0, 1, 1)
         layout.addWidget(self.qText_mainMethod, 12, 1, 1, 7)
-        self.qText_mainMethod.setMaximumHeight(240)
+        self.qText_mainMethod.setMaximumHeight(480)
 
         qlabel_myFocus.setBuddy(self.qText_myFocus)
         self.qText_myFocus.setTabChangesFocus(True)
         layout.addWidget(qlabel_myFocus, 16, 0, 1, 1)
         layout.addWidget(self.qText_myFocus, 16, 1, 1, 7)
-        self.qText_myFocus.setMaximumHeight(240)
+        self.qText_myFocus.setMaximumHeight(180)
 
         qlabel_doubts.setBuddy(self.qText_doubts)
         self.qText_doubts.setTabChangesFocus(True)
         layout.addWidget(qlabel_doubts, 18, 0, 1, 1)
         layout.addWidget(self.qText_doubts, 18, 1, 1, 7)
-        self.qText_doubts.setMaximumHeight(240)
+        self.qText_doubts.setMaximumHeight(180)
 
         qlabel_miscellaneous.setBuddy(self.qText_miscellaneous)
         self.qText_miscellaneous.setTabChangesFocus(True)
         layout.addWidget(qlabel_miscellaneous, 20, 0, 1, 1)
         layout.addWidget(self.qText_miscellaneous, 20, 1, 1, 7)
-        self.qText_miscellaneous.setMaximumHeight(240)
+        self.qText_miscellaneous.setMaximumHeight(180)
 
         # ##############################################################################################################
 

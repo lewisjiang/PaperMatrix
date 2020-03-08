@@ -207,7 +207,7 @@ class ComparatorViewer(QtWidgets.QWidget):
         vheader.setSectionResizeMode(QtWidgets.QHeaderView.Fixed)
         # print(vheader.minimumSectionSize())
         vheader.setMinimumSectionSize(20)
-        vheader.setDefaultSectionSize(10)
+        vheader.setDefaultSectionSize(20)
 
         hheader = self.view.horizontalHeader()
         # hheader.setSectionResizeMode(QtWidgets.QHeaderView.Fixed)
