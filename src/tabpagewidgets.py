@@ -39,7 +39,7 @@ class EditTabPageWidget(QtWidgets.QWidget):
         # qlabel_lastModTime = QLabel('lastModTime')
         qlabel_background = QLabel('background')
         qlabel_pastWork = QLabel('pastWork')
-        qlabel_gap = QLabel('gap')
+        qlabel_gap = QLabel('gap/problems')
         qlabel_contribution = QLabel('contribution')
         qlabel_mainMethod = QLabel('mainMethod')
         qlabel_overview = QLabel('Overview')
@@ -106,55 +106,55 @@ class EditTabPageWidget(QtWidgets.QWidget):
         self.qText_overview.setTabChangesFocus(True)
         layout.addWidget(qlabel_overview, 4, 0, 1, 1)
         layout.addWidget(self.qText_overview, 4, 1, 1, 7)
-        self.qText_overview.setMaximumHeight(240)
+        self.qText_overview.setMaximumHeight(120)
 
         qlabel_background.setBuddy(self.qText_background)
         self.qText_background.setTabChangesFocus(True)
         layout.addWidget(qlabel_background, 5, 0, 1, 1)
         layout.addWidget(self.qText_background, 5, 1, 1, 7)
-        self.qText_background.setMaximumHeight(60)
+        self.qText_background.setMaximumHeight(55)
 
         qlabel_pastWork.setBuddy(self.qText_pastWork)
         self.qText_pastWork.setTabChangesFocus(True)
         layout.addWidget(qlabel_pastWork, 6, 0, 1, 1)
         layout.addWidget(self.qText_pastWork, 6, 1, 1, 7)
-        self.qText_pastWork.setMaximumHeight(60)
+        self.qText_pastWork.setMaximumHeight(75)
 
         qlabel_gap.setBuddy(self.qText_gap)
         self.qText_gap.setTabChangesFocus(True)
         layout.addWidget(qlabel_gap, 8, 0, 1, 1)
         layout.addWidget(self.qText_gap, 8, 1, 1, 7)
-        self.qText_gap.setMaximumHeight(240)
+        self.qText_gap.setMaximumHeight(75)
 
         qlabel_contribution.setBuddy(self.qText_contribution)
         self.qText_contribution.setTabChangesFocus(True)
         layout.addWidget(qlabel_contribution, 10, 0, 1, 1)
         layout.addWidget(self.qText_contribution, 10, 1, 1, 7)
-        self.qText_contribution.setMaximumHeight(240)
+        self.qText_contribution.setMaximumHeight(120)
 
         qlabel_mainMethod.setBuddy(self.qText_mainMethod)
         self.qText_mainMethod.setTabChangesFocus(True)
         layout.addWidget(qlabel_mainMethod, 12, 0, 1, 1)
         layout.addWidget(self.qText_mainMethod, 12, 1, 1, 7)
-        self.qText_mainMethod.setMaximumHeight(480)
+        self.qText_mainMethod.setMaximumHeight(240)
 
         qlabel_myFocus.setBuddy(self.qText_myFocus)
         self.qText_myFocus.setTabChangesFocus(True)
         layout.addWidget(qlabel_myFocus, 16, 0, 1, 1)
         layout.addWidget(self.qText_myFocus, 16, 1, 1, 7)
-        self.qText_myFocus.setMaximumHeight(180)
+        self.qText_myFocus.setMaximumHeight(120)
 
         qlabel_doubts.setBuddy(self.qText_doubts)
         self.qText_doubts.setTabChangesFocus(True)
         layout.addWidget(qlabel_doubts, 18, 0, 1, 1)
         layout.addWidget(self.qText_doubts, 18, 1, 1, 7)
-        self.qText_doubts.setMaximumHeight(180)
+        self.qText_doubts.setMaximumHeight(120)
 
         qlabel_miscellaneous.setBuddy(self.qText_miscellaneous)
         self.qText_miscellaneous.setTabChangesFocus(True)
         layout.addWidget(qlabel_miscellaneous, 20, 0, 1, 1)
         layout.addWidget(self.qText_miscellaneous, 20, 1, 1, 7)
-        self.qText_miscellaneous.setMaximumHeight(180)
+        self.qText_miscellaneous.setMaximumHeight(80)
 
         # ##############################################################################################################
 
@@ -309,6 +309,7 @@ class ComparatorTabPageWidget(QtWidgets.QWidget):
         self.filterDomainCombo.addItem("All", searchableDomainIndex)
         for i in searchableDomainIndex:
             self.filterDomainCombo.addItem(headerNames[i], [i])
+
         filterComboLabel = QtWidgets.QLabel("Filter Domain:")
         filterComboLabel.setBuddy(self.filterDomainCombo)
         groupGridLayout.addWidget(filterComboLabel, 0, 0, 1, 4)
@@ -362,6 +363,7 @@ class ComparatorTabPageWidget(QtWidgets.QWidget):
         self.filterPatternLineEdit.textChanged.connect(self.textFilterChanged)
         self.filterSyntaxCheckBox.toggled.connect(self.textFilterChanged)
         self.filterCaseSensitivityCheckBox.toggled.connect(self.textFilterChanged)
+        self.filterDomainCombo.currentIndexChanged.connect(self.textFilterDomainChanged)
 
         self.btnExpandSelected.clicked.connect(self.qCompViewer.onClickExpandRows)
         self.btnCollapseSelected.clicked.connect(self.qCompViewer.onClickCollapseRows)
@@ -388,6 +390,7 @@ class ComparatorTabPageWidget(QtWidgets.QWidget):
         self.textFilterChanged()
 
     def textFilterChanged(self):
+        print(self.filterPatternLineEdit.text())
         if self.filterSyntaxCheckBox.isChecked():
             syntax = QtCore.QRegExp.PatternSyntax(QtCore.QRegExp.RegExp)
         else:

@@ -17,7 +17,6 @@ from tabpagewidgets import EditTabPageWidget, ComparatorTabPageWidget
 class MainWindow(QMainWindow):
     def __init__(self, ):
         super(QMainWindow, self).__init__()
-
         rec = QApplication.desktop().screenGeometry()
         self.monitor_height = rec.height()
         self.monitor_width = rec.width()
@@ -516,6 +515,10 @@ class MainWindow(QMainWindow):
         tab.btnSave.clicked.connect(self.onClicked_SaveEdit)
 
         tab.qLine_nickname.textChanged.connect(self.setCurrentEditTabLabel)
+        tab.qLine_title.textChanged.connect(self.setCurrentEditTabLabel)
+
+        tab.qLine_nickname.textChanged.emit("")
+        tab.qLine_title.textChanged.emit("")
 
     def CloseTab(self, i):
         self.tabWidget.removeTab(i)
@@ -523,10 +526,13 @@ class MainWindow(QMainWindow):
     @pyqtSlot()
     def setCurrentEditTabLabel(self):
         txt = self.tabWidget.currentWidget().qLine_nickname.text()
-        if len(txt) < 10:
+        title = self.tabWidget.currentWidget().qLine_title.text()
+        if len(txt) < 1:
+            txt = title
+        if len(txt) < 20:
             self.tabWidget.setTabText(self.tabWidget.currentIndex(), txt)
         else:
-            self.tabWidget.setTabText(self.tabWidget.currentIndex(), txt[:10] + "..")
+            self.tabWidget.setTabText(self.tabWidget.currentIndex(), txt[:19] + "..")
 
     @pyqtSlot()
     def setCurrentComparatorTabLabel(self):
@@ -560,6 +566,7 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    app.setWindowIcon(QtGui.QIcon("ic.png"))
     mainwindow = MainWindow()
     mainwindow.setWindowTitle("PaperMatrix")
     mainwindow.show()

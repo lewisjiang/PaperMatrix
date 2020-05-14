@@ -163,15 +163,18 @@ class MySortFilterProxyModel(QtCore.QSortFilterProxyModel):
         for sect in self.filterDomains:
             idx = self.sourceModel().index(sourceRow, sect, sourceParent)
             res = res or self.filterRegExp().indexIn(str(self.sourceModel().data(idx))) >= 0
-
         return res
 
     def lessThan(self, left, right):
         leftData = self.sourceModel().data(left)
         rightData = self.sourceModel().data(right)
 
-        if leftData is None or rightData is None:
+        if leftData is None and rightData is None:
             return True
+        if leftData is None:
+            return True
+        if rightData is None:
+            return False
         return leftData < rightData
 
 
