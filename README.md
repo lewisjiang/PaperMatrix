@@ -42,7 +42,7 @@ Just run `python3 papermatrix.py` in the terminal (or equivalent w/ different co
 
 ## Todo list
 
-- [ ] open source license w.r.t. Qt
+- [x] open source license w.r.t. Qt
 - [ ] operation hotkeys (close tab, switch tab)
 - [ ] a better way to generate unique paper id.
 - [ ] font size for accurate collapse/expand entries in viewers
